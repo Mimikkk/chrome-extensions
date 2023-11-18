@@ -8,9 +8,10 @@ import { find } from "@shared/dom/selectors.js";
       const isDaily = node.firstChild.firstChild instanceof HTMLAnchorElement;
       const isPremium = node.firstChild.firstChild instanceof SVGElement;
 
-      try {
-        if (rows.contains(node) && (isDaily || isPremium)) rows.removeChild(node);
-      } catch {}
+      if (isDaily || isPremium) {
+        (node as HTMLDivElement).style.height = "0";
+        (node as HTMLDivElement).style.overflow = "hidden";
+      }
     });
   };
 
