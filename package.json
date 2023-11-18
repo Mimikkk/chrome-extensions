@@ -1,4 +1,11 @@
 {
+  "name": "chrome-extensions",
+  "description": "Chrome Extensions - managing / creating",
+  "author": {
+    "name": "Daniel Zdancewicz",
+    "email": "zdancewicz.daniel@gmail.com",
+    "url": "github.com/mimikkk"
+  },
   "type": "module",
   "scripts": {
     "build": "vite build",
