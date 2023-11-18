@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "create": "node ./scripts/create.js"
+  },
+  "devDependencies": {
+    "axios": "^1.6.2",
+    "concurrently": "^8.2.2",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.5",
+    "@types/node": "^20.9.1",
+    "remeda": "^1.29.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
+}
