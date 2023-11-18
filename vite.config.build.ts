@@ -29,15 +29,12 @@ console.info();
 export default defineConfig({
   base: "./",
   build: {
-    sourcemap: false,
-    minify: false,
-    rollupOptions: { treeshake: false },
     outDir: `build/${name}`,
     emptyOutDir: false,
     lib: {
-      entry: `src/plugins/${name}/index.ts`,
-      fileName: "index",
-      formats: ["cjs"],
+      entry: [`src/plugins/${name}/background.ts`, `src/plugins/${name}/manipulate.ts`],
+      fileName: (_, b) => `${b}.js`,
+      formats: ["es"],
     },
   },
   resolve: {

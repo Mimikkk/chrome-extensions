@@ -17,21 +17,26 @@
     "48": "/icons/favicon48.png",
     "128": "/icons/favicon128.png"
   },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
   "permissions": [
-    "<all_urls>",
     "webRequest",
+    "webNavigation",
+    "background",
     "webRequestBlocking"
   ],
   "host_permissions": [
-    "*://[*.]leetcode.com/problemset/*"
+    "*://*/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "*://[*.]leetcode.com/problemset/*"
+        "*://leetcode.com/problemset/*"
       ],
       "js": [
-        "./index.cjs"
+        "./manipulate.js"
       ],
       "world": "MAIN"
     }
