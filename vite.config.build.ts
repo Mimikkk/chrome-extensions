@@ -14,7 +14,7 @@ try {
 console.info(`Building plugin '${name}'.`);
 
 try {
-  await unlink(`build/${name}`);
+  await unlink(`build/${name}/`);
 } catch {
   console.info(`- No previous build found for '${name}'.`);
 }
@@ -29,16 +29,21 @@ console.info();
 export default defineConfig({
   base: "./",
   build: {
-    target: "esnext",
+    sourcemap: false,
+    minify: false,
+    rollupOptions: { treeshake: false },
     outDir: `build/${name}`,
     emptyOutDir: false,
     lib: {
       entry: `src/plugins/${name}/index.ts`,
       fileName: "index",
-      formats: ["es"],
+      formats: ["cjs"],
     },
   },
   resolve: {
     alias: { "@shared": path.resolve(__dirname, "./src/shared") },
+  },
+  define: {
+    "process.env": {},
   },
 });

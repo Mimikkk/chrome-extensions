@@ -31,7 +31,7 @@
         "*://[*.]leetcode.com/problemset/*"
       ],
       "js": [
-        "./index.js"
+        "./index.cjs"
       ],
       "world": "MAIN"
     }
