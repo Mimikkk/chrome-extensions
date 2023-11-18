@@ -8,10 +8,15 @@
   },
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "create": "node ./scripts/create.js"
+    "build": "vite build --config vite.config.build.ts",
+    "create": "node scripts/create.ts",
+    "dev": "vite-node -w scripts/develop.ts --config vite.config.ts"
   },
   "devDependencies": {
+    "vite-node": "^0.34.6",
+    "@testing-library/dom": "^9.3.3",
+    "@types/chrome": "^0.0.251",
+    "chokidar": "^3.5.3",
     "axios": "^1.6.2",
     "concurrently": "^8.2.2",
     "copyfiles": "^2.4.1",

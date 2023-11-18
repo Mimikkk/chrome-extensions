@@ -1,11 +1,5 @@
+import { readArgument } from "./shared/readArgument.js";
 import { cp, mkdir } from "fs/promises";
-
-const readArgument = (name) => {
-  const argument = process.argv.find((arg) => arg.startsWith(`--${name}=`));
-  if (argument === undefined) throw Error(`Missing argument --${name}`);
-
-  return argument.split("=")[1];
-};
 
 try {
   const name = readArgument("name");

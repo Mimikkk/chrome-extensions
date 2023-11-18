@@ -14,11 +14,13 @@
       "ESNext"
     ],
     "types": [
-      "vite/client"
+      "vite/client",
+      "@types/chrome"
     ]
   },
   "include": [
-    "src"
+    "src",
+    "scripts"
   ],
   "references": [
     {
