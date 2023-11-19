@@ -9,23 +9,25 @@
   "type": "module",
   "scripts": {
     "build": "vite build --config vite.config.build.ts",
-    "create": "vite-node scripts/create.ts",
+    "create": "vite-node -w scripts/create.ts",
     "dev": "vite-node -w scripts/develop.ts"
   },
   "dependencies": {
     "remeda": "^1.29.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.0",
     "@types/chrome": "^0.0.251",
-    "vite-node": "^0.34.6",
+    "@types/node": "^20.9.1",
     "chokidar": "^3.5.3",
     "concurrently": "^8.2.2",
     "copyfiles": "^2.4.1",
-    "rimraf": "^5.0.5",
-    "@types/node": "^20.9.1",
     "prettier": "^2.8.8",
-    "typescript": "^5.2.2",
+    "rimraf": "^5.0.5",
+    "svgson": "^5.3.1",
+    "typescript": "^5.3.1-rc",
     "vite": "^5.0.0",
+    "vite-node": "^0.34.6",
     "vitest": "^1.0.0-beta.5"
   }
 }
