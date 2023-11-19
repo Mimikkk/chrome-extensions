@@ -49,12 +49,9 @@ const favicon = await createIcon(
 );
 
 await fs.writeFile(`${directory}/icons/favicon.svg`, favicon);
-const sizes = [16, 32, 48, 128];
+const sizes = [16, 24, 32, 48, 128];
 for (const size of sizes) {
-  const image = Svg.asPng(favicon, {
-    notext: size === 16,
-    size,
-  });
+  const image = Svg.asPng(favicon, { size });
   console.info(`-- 'favicon${size}.png'`);
 
   await fs.writeFile(`${directory}/icons/favicon${size}.png`, image);

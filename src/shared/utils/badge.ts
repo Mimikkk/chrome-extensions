@@ -11,7 +11,7 @@ export namespace Badge {
     if (color !== undefined) await A.setBadgeBackgroundColor({ color, tabId });
   };
 
-  export const clear = (tabId?: number) => set({ text: "eh", tabId });
+  export const clear = (tabId?: number) => set({ text: "", tabId });
 
   export interface TimedOptions extends SetOptions {
     timeMs: number;

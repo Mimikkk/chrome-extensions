@@ -10,6 +10,11 @@
     "128": "/icons/favicon128.png"
   },
   "action": {
+    "default_icon": {
+      "16": "/icons/favicon16.png",
+      "24": "/icons/favicon24.png",
+      "32": "/icons/favicon32.png"
+    },
     "default_title": "Reload extensions"
   },
   "permissions": [
