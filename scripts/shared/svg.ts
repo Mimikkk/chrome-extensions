@@ -20,18 +20,24 @@ export namespace Svg {
 
   interface AsPngOptions {
     size: number;
-    antialiasing?: boolean;
+    antialiasing?: boolean | { text?: boolean; shapes?: boolean; images?: boolean };
     notext?: boolean;
   }
 
-  export const asPng = (source: string, { size, notext, antialiasing }: AsPngOptions) =>
-    new Resvg(source, {
+  export const asPng = (source: string, { size, notext, antialiasing }: AsPngOptions) => {
+    const isFineAntialias = typeof antialiasing === "object";
+    const antialiasingText = isFineAntialias ? antialiasing.text : antialiasing;
+    const antialiasingShapes = isFineAntialias ? antialiasing.shapes : antialiasing;
+    const antialiasingImages = isFineAntialias ? antialiasing.images : antialiasing;
+
+    return new Resvg(source, {
       fitTo: { mode: "height", value: size },
-      shapeRendering: antialiasing ? 2 : 0,
-      textRendering: antialiasing ? 2 : 0,
+      shapeRendering: antialiasingShapes ? 2 : 0,
+      textRendering: antialiasingText ? 1 : 0,
+      imageRendering: antialiasingImages ? 1 : 0,
       font: { loadSystemFonts: !notext },
-      imageRendering: antialiasing ? 1 : 0,
     })
       .render()
       .asPng();
+  };
 }

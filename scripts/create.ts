@@ -51,7 +51,10 @@ const favicon = await createIcon(
 await fs.writeFile(`${directory}/icons/favicon.svg`, favicon);
 const sizes = [16, 24, 32, 48, 128];
 for (const size of sizes) {
-  const image = Svg.asPng(favicon, { size });
+  const image = Svg.asPng(favicon, {
+    antialiasing: { shapes: size >= 24, text: size >= 32 },
+    size,
+  });
   console.info(`-- 'favicon${size}.png'`);
 
   await fs.writeFile(`${directory}/icons/favicon${size}.png`, image);
