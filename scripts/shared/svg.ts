@@ -18,6 +18,36 @@ export namespace Svg {
     attributes: options?.attributes ?? {},
   });
 
+  export interface RectOptions {
+    width: number;
+    height: number;
+    x?: number | string;
+    y?: number | string;
+    rx?: number | string;
+    ry?: number | string;
+    border?: number | string;
+    fill?: string;
+    color?: string;
+  }
+
+  export const rect = ({ fill, border, width, height, color, x, y, rx, ry }: RectOptions): svg.INode => ({
+    type: "element",
+    name: "rect",
+    value: "",
+    children: [],
+    attributes: {
+      "stroke-width": `${border ?? 0}`,
+      width: `${width}`,
+      height: `${height}`,
+      x: `${x ?? 0}`,
+      y: `${y ?? 0}`,
+      rx: `${rx ?? width / 4}`,
+      ry: `${ry ?? height / 4}`,
+      fill: fill!,
+      color: color!,
+    },
+  });
+
   interface AsPngOptions {
     size: number;
     antialiasing?: boolean | { text?: boolean; shapes?: boolean; images?: boolean };

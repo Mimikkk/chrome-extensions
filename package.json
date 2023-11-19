@@ -24,6 +24,7 @@
     "copyfiles": "^2.4.1",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.5",
+    "sharp": "^0.32.6",
     "svgson": "^5.3.1",
     "typescript": "^5.3.1-rc",
     "vite": "^5.0.0",

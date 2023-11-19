@@ -16,7 +16,7 @@ const build = (name: string) => {
 
   cache.set(
     name,
-    child_process.exec(`pnpm run build -- --name=${name}`, (error, stdout, stderr) => {
+    child_process.exec(`pnpm run build -- --name="${name}"`, (error, stdout, stderr) => {
       if (error) console.error(error);
       if (stdout) console.log(stdout);
       if (stderr) console.error(stderr);

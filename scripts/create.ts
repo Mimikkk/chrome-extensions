@@ -13,18 +13,30 @@ try {
   process.exit(1);
 }
 
-const attributes = {
-  "stroke-width": ".3",
-  x: "50%",
-  y: "50%",
-  "font-size": "7",
-  "dominant-baseline": "central",
-  "text-anchor": "middle",
+const RectOptions: Svg.RectOptions = {
+  width: 24,
+  height: 24,
+  rx: "25%",
+  ry: "25%",
+  fill: "#ab8d90",
+};
+const TextOptions: Svg.TextOptions = {
+  attributes: {
+    "stroke-width": "0",
+    x: "50%",
+    y: "50%",
+    color: "#fff",
+    fill: "#fff",
+    "font-size": "16",
+    "dominant-baseline": "central",
+    "text-anchor": "middle",
+  },
 };
 export const createIcon = async (name: string) => {
   const icon = await svgson.parse(IconTemplate);
 
-  icon.children.push(Svg.text(name, { attributes }));
+  icon.children.unshift(Svg.rect(RectOptions));
+  icon.children.push(Svg.text(name, TextOptions));
 
   return svgson.stringify(icon);
 };
@@ -43,10 +55,11 @@ console.info(`-- making favicon '${name}'...`);
 const favicon = await createIcon(
   name
     .split(" ")
-    .map((x) => x[0])
+    .map(([c]) => c)
     .join("")
     .toUpperCase(),
 );
+console.log({ favicon });
 
 await fs.writeFile(`${directory}/icons/favicon.svg`, favicon);
 const sizes = [16, 24, 32, 48, 128];
