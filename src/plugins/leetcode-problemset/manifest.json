@@ -1,6 +1,6 @@
 {
-  "name": "Leetcode Problemset.",
-  "description": "Remove from the view all premium or daily problems.",
+  "name": "Leetcode Problemset",
+  "description": "Remove all premium or daily problems",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {

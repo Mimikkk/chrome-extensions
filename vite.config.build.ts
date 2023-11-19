@@ -31,6 +31,7 @@ export default defineConfig({
   build: {
     outDir: `build/${name}`,
     emptyOutDir: false,
+    minify: false,
     lib: {
       entry: [`src/plugins/${name}/background.ts`, `src/plugins/${name}/manipulate.ts`],
       fileName: (_, b) => `${b}.js`,

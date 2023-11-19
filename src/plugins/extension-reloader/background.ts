@@ -17,4 +17,4 @@ const reloadExtensions = async () => {
   await Badge.timed(BadgeOk);
 };
 
-chrome.browserAction.onClicked.addListener(reloadExtensions);
+chrome.action.onClicked.addListener(reloadExtensions);
