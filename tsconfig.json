@@ -4,6 +4,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "NodeNext",
+    "strict": true,
+    "verbatimModuleSyntax": true,
     "paths": {
       "@shared/*": [
         "src/shared/*"

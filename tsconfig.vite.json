@@ -4,7 +4,9 @@
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "nodenext",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "strict": true,
+    "verbatimModuleSyntax": true
   },
   "include": [
     "vite.config.build.ts",
