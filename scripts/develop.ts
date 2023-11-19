@@ -4,11 +4,6 @@ import { readArgument } from "./shared/readArgument.js";
 import { debounce } from "./shared/debounce.js";
 import fs from "fs";
 
-const argument = readArgument("name", "all");
-const names = argument === "all" ? fs.readdirSync("src/plugins").filter((name) => name !== "template") : [argument];
-
-console.info(`Developing: ${names.map((name) => `'${name}'`).join(", ")}.`);
-
 const cache = new Map<string, child_process.ChildProcess>();
 const build = (name: string) => {
   console.info(`-- Building plugin '${name}'.`);
@@ -27,9 +22,18 @@ const build = (name: string) => {
       if (stderr) console.error(stderr);
     }),
   );
-  console.info();
+};
+const readArguments = () => {
+  const argument = readArgument("name", "all");
+  const names = argument === "all" ? fs.readdirSync("src/plugins").filter((name) => name !== "template") : [argument];
+
+  return { names };
 };
 
+const { names } = readArguments();
+console.info(`Developing: ${names.map((name) => `'${name}'`).join(", ")}.`);
+
+names.forEach(build);
 names.forEach((name) => {
   console.info(`- watching src/plugins/${name}/ for changes.`);
 
