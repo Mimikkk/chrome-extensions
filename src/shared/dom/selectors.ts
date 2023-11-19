@@ -1,5 +1,5 @@
-export const select = <E extends Element>(selector: string, nth?: number): E | undefined =>
-  nth === undefined ? document.querySelector<E>(selector) : document.querySelectorAll<E>(selector)[nth];
+export const select = <E extends Element>(selector: string, nth?: number): E | null =>
+  nth === undefined ? document.querySelector<E>(selector) : document.querySelectorAll<E>(selector)[nth] ?? null;
 
 export const find = <E extends Element>(selector: string, nth?: number): Promise<E | undefined> =>
   new Promise((resolve) => {

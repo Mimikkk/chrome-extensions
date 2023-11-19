@@ -7,15 +7,15 @@ import fs from "fs";
 const argument = readArgument("name", "all");
 const names = argument === "all" ? fs.readdirSync("src/plugins").filter((name) => name !== "template") : [argument];
 
-console.log(`Developing: ${names.map((name) => `'${name}'`).join(", ")}.`);
+console.info(`Developing: ${names.map((name) => `'${name}'`).join(", ")}.`);
 
 const cache = new Map<string, child_process.ChildProcess>();
 const build = (name: string) => {
-  console.log(`-- Building plugin '${name}'.`);
+  console.info(`-- Building plugin '${name}'.`);
 
   let process = cache.get(name);
   if (process) {
-    console.log(`-- Killing previous build.`);
+    console.info(`-- Killing previous build.`);
     process.kill("SIGKILL");
   }
 
@@ -27,16 +27,20 @@ const build = (name: string) => {
       if (stderr) console.error(stderr);
     }),
   );
+  console.info();
 };
 
 names.forEach((name) => {
-  console.log(`- watching src/${name}/ for changes.`);
+  console.info(`- watching src/plugins/${name}/ for changes.`);
 
-  chokidar.watch(`src/${name}`).on(
+  chokidar.watch(`src/plugins/${name}`).on(
     "change",
     debounce(() => build(name)),
   );
 });
 
-console.log(`- watching src/shared/ for changes.`);
-chokidar.watch("src/shared").on("change", () => names.forEach((name) => build(name)));
+console.info(`- watching src/shared/ for changes.`);
+chokidar.watch("src/shared", {}).on(
+  "change",
+  debounce(() => names.forEach((name) => build(name))),
+);
