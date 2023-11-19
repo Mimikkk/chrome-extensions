@@ -1,16 +1,8 @@
 {
-  "name": "Template",
-  "description": "Template",
+  "name": "Leetcode Problemset.",
+  "description": "Remove from the view all premium or daily problems.",
   "version": "1.0",
   "manifest_version": 3,
-  "action": {
-    "default_icon": {
-      "16": "/icons/favicon16.png",
-      "32": "/icons/favicon32.png",
-      "48": "/icons/favicon48.png",
-      "128": "/icons/favicon128.png"
-    }
-  },
   "icons": {
     "16": "/icons/favicon16.png",
     "32": "/icons/favicon32.png",
