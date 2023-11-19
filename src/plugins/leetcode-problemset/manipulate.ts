@@ -11,6 +11,9 @@ import { find } from "@shared/dom/selectors.js";
       if (isDaily || isPremium) {
         (node as HTMLDivElement).style.height = "0";
         (node as HTMLDivElement).style.overflow = "hidden";
+      } else {
+        (node as HTMLDivElement).style.height = "unset";
+        (node as HTMLDivElement).style.overflow = "unset";
       }
     });
   };

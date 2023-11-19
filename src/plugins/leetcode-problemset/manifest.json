@@ -24,8 +24,7 @@
   "permissions": [
     "webRequest",
     "webNavigation",
-    "background",
-    "webRequestBlocking"
+    "background"
   ],
   "host_permissions": [
     "*://*/*"
